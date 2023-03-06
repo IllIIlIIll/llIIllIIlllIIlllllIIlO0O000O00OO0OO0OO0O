@@ -1,0 +1,320 @@
+<html>
+  <head>
+    <title>Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gajraj+One&display=swap" rel="stylesheet">
+  </head>
+  <style>
+    h1 {
+      text-align: center;
+      font-family: 'Gajraj One', cursive;
+      color: black;
+    }
+
+    .yoyo {
+      margin-bottom: 8px;
+    }
+
+    /* Light mode */
+    body.light button.dl {
+      filter: brightness(1);
+    }
+
+    /* Dark mode */
+    body.dark button.dl {
+      filter: brightness(0.6);
+    }
+
+    body {
+      background: linear-gradient(135deg,
+          rgba(85, 44, 133, 0.8) 0%,
+          rgba(64, 271, 168, 0.8) 100%);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100%;
+      color: #000;
+    }
+
+    /* Dark mode styles */
+    body.dark {
+      background: linear-gradient(135deg,
+          rgba(45, 4, 93, 1) 0%,
+          rgba(24, 231, 28, 1) 100%);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100%;
+      color: #fff;
+    }
+
+    body {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .gamecard {
+      width: 170px;
+      height: 270px;
+      background-color: #2e2e2e;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 20px;
+      transition: transform .5s;
+      justify-content: center;
+      float: center;
+      box-shadow: 0px 5px 10px 0px #2e2e2e, 0px 0px 0px 0px;
+      color: white;
+      transition: 0.5s;
+      font-size: 9px;
+      overflow-wrap: anywhere;
+      display: inline-block;
+      z-index: 1;
+      border: 0px;
+      border-color: transparent;
+      outline: none;
+    }
+
+    .gamecard:hover {
+      transform: scale(1.3);
+      transition: transform .5s, font-size .5s;
+      z-index: 2;
+    }
+
+
+
+    .gamename {
+      font-size: 20px;
+      margin-bottom: 0px;
+      margin-top: 5px;
+    }
+
+    select {
+      font-family: 'Press Start 2P', cursive;
+      color: gray;
+      background-color: #111;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+
+    select:hover,
+    select:focus {
+      background-color: #222;
+    }
+
+    select option {
+      color: #fff;
+      background-color: #111;
+    }
+
+    select option:hover {
+      background-color: darkred;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .dl img {
+      border-radius: 5px;
+      text-align: left
+    }
+
+    header {
+      height: 80px;
+      margin-top: -10px;
+      background-color: rgb(42, 43, 42);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+      width: 100%;
+      /* set the width to 100% to make the header touch the sides of the screen */
+      z-index: 3;
+    }
+  </style>
+  <body>
+    <header style="position:fixed; top:0px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+        <div style="display: flex; align-items: center;">
+          <input class="s" style="border-radius: 10px; height: 30px; width: 300px; border: 2px solid #333; background-color: #111; color: #fff; font-family: 'Press Start 2P', cursive; font-size: 14px; padding-left: 10px; transition: background-color 0.3s ease;" type="text" id="search-bar" placeholder="Search games...">
+          <select class="f" onchange="select_cat(this.value)" style="margin-left: 10px;">
+            <option value="all" selected>All Games</option>
+            <option value="platformer">Platformer</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="puzzle">Puzzle</option>
+            <option value="horror">Horror</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <button class="dl" style="width: 34px; height: 30px; margin-right: 10px; background-color: #fff; border: 1px solid #000; border-radius: 5px; font-size: 14px; font-family: 'Press Start 2P', cursive;" onclick="toggleMode()">
+            <img style="top: 0; left: 0; border: 0; padding: 0; margin: 0; height: 100%; width: 100%;" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOR3eMU6pUcCDCxEehi2AMFxV1A9WFkmJdnC4ak9xkZv9ANDc9SvvKMOByDGuapkleCNYg49JB56vcuosUFZBlo_Gvdf=w1920-h950" alt="">
+          </button>
+        </div>
+      </div>
+    </header>
+    <h1 style="margin-top:100px">Games!</h1>
+    <div class="container" style="text-align: center;">
+      <a href="bloxorz.html">
+        <button puzzle="true" class="gamecard">
+          <img class="mains" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOSfFzuOthPdYVr0vsAR96SsKlWsXlQNeDE2V2qesrmQnNkVYJd6C7Uzm_sS-vizbiIhA0zeVi3wwldvAf1jZGQ7yvKCHg=w1920-h950" alt="" style="width: 100%; border-radius: 20px;" />
+          
+          <p class="gamename">Bloxorz</p>
+          <br class="gamedec">
+          <p>Bloxorz is a puzzle game about moving a rolling block through a level.</p>
+        </button>
+      </a>
+      <a href="floodrunner4.html">
+        <button action="true" platformer="true" class="gamecard">
+          <img class="mains" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOQrmMwVjbE16VpAn1KJOZGz71Y0sc0HZoQj4HFwYCqTnlitQpYZrsGF_fQRsLfQ4u4CUElN9n0nvoiKHFdsS9uN3Kwokg=w1920-h950" alt="" style="margin-top:0px;width: 100%; border-radius: 20px;" />
+         
+          <p class="gamename">Flood Runner 4</p>
+          <br class="gamedec"> This is the fourth Flood Runner, in which you try to escape from a dangerous wave.
+        </button>
+      </a>
+      <a href="1v1lol.html">
+        <button action="true" class="gamecard">
+          <img class="mains" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOSxbq41jz552M-uyalAOHyBLTzRUbY9Rj6G5OrWWnM87S75YXhKmKU0fN2NoxA1LGwPbjtaEvGfU1j8J5lp3oTGtOnh=w1920-h950" alt="" style="margin-top:0px;width: 100%; border-radius: 20px;" />
+         
+          <p class="gamename">1v1.LOL</p>
+          <br class="gamedec"> 1v1.LOL is a competitive online third-person shooter.
+        </button>
+      </a>
+      </a>
+      <a href="Roblox.html">
+        <button adventure="true" class="gamecard">
+          <img class="mains" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOTYLvOBOJ-3cxedvT3NNSsLFkzRyur64yKK0EhMNv7seIYePGCijDazJsbjIBylu7eTdpVQ9GlFhwlsyrcjCicssSPBmw=w1920-h950" alt="" style="margin-top:0px;width: 100%; border-radius: 20px;" />
+       
+          <p class="gamename">Roblox</p>
+          <br class="gamedec">Roblox is an online game platform and game creation system.
+        </button>
+      </a>
+      <a href="bigneontowervstinysquare.html">
+        <button platformer="true" class="gamecard">
+          <img class="mains" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEORIX1Ifm--h_F9wxgvUM4LY1iJuY1hxGiJMD_SxRH5K6eTuh1Ac6Z_ytScGp5KsZlGzQeygW6B5b_zSek4MPwSGF2fYwA=w1920-h950" alt="" style=" margin-top:0px;width: 100%; border-radius: 20px;" />
+        
+          <p class="gamename">BNT Vs TS</p>
+          <br class="gamedec" style="margin-bottom:0px; font-size:3px;">
+          <p> Big NEON Tower Vs. Tiny Square is an arcade platformer inspired by 90s arcade games.</p>
+          </br>
+        </button>
+      </a>
+      <a href="baldisbasics.html">
+        <button puzzle="true" class="gamecard">
+          <img class="mains" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOSBPcp_dEGYzsFTilXlGPVr_67nA4OAdjoeMVgglWK4N0xPdcjVlbGl0IQ8bE3rlzgLVAo2LxjxQyR27v8EZB2ITEmEWg=w1920-h950" alt="" style=" margin-top:0px;width: 100%; border-radius: 20px;" />
+    
+          <p class="gamename">Baldi's Basics</p>
+          <br class="gamedec" style="margin-bottom:0px; font-size:3px;">
+          <p> Play as a student and collect your notebooks by answering simple questions but don't get one wrong baldi doesn't like it.</p>
+          </br>
+        </button>
+      </a>
+      <a href="Retrobowl.html">
+        <button action="true" class="gamecard">
+          <img class="mains" src="  https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOS9ByYtg87KVgZbJ2Z2Zekiap8bVGSuXOs18q5bx-ZecZnIlLCyelfMyWUzXW_DdpV_QoGR5M5KZeVU014AyylKaq6O=w1920-h950" alt="" style=" margin-top:0px;width: 100%; border-radius: 20px;" />
+
+          <p class="gamename">Retro Bowl</p>
+          <br class="gamedec" style="margin-bottom:0px; font-size:3px;">
+          <p> Retro Bowl is an 8 bit styled American football video game.</p>
+          </br>
+        </button>
+      </a>
+      <a href="Slope.html">
+        <button platformer="true" class="gamecard">
+          <img class="mains" src=" https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOS7AlhWm-z81ZXntU7L1Lp_UpaVY9gIIvSWlDUmPrSh_GOXvljyhman4VeYjb9zNgUdYUB14CGLjvvhOOTXxfa5z4k9Hg=w1920-h950" alt="" style=" margin-top:0px;width: 100%; border-radius: 20px;" />
+    
+          <p class="gamename">Slope</p>
+          <br class="gamedec" style="margin-bottom:0px; font-size:3px;">
+          <p> Slope game is a fantastic speed run game where you can drive a ball rolling on tons of slopes and obstacles. </p>
+          </br>
+        </button>
+      </a>
+      <a href="OvO.html">
+        <button puzzle="true" platformer="true" class="gamecard">
+          <img class="mains" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOR4KwnoHhPOvMgjxXdOzYmPyHzht4XVJfm-xKgUUa9QCEGYww1c-9B_IBlmrF93OjHyNBBKnski3fqK4wp2EnpNCCTf0Q=w1920-h950" alt="" style=" margin-top:0px;width: 100%; border-radius: 20px;" />
+        
+          <p class="gamename">OvO</p>
+          <br class="gamedec" style="margin-bottom:0px; font-size:3px;">
+          <p> OvO Game is a fast-paced platformer in which you must complete each level using improvised and precise parkour skills.</p>
+          </br>
+        </button>
+        <a href="Fnaf1.html">
+          <button horror="true" puzzle="true" class="gamecard">
+            <img class="mains" src=" https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOTIxMhqD9eUyq7TN1QTBzRuAtvq1K9LfNQie1JdrM-y0IK1vZUOSh3TNaNGeV63xibYwfEMlPucCBgpohisHfcxNWojAA=w1920-h950" alt="" style=" margin-top:0px;width: 100%; border-radius: 20px;" />
+        
+            <p class="gamename">FNaF 1</p>
+            <br class="gamedec" style="margin-bottom:0px; font-size:3px;">
+            <p> Survive five nights at Freddy Fazbear's Pizza while avoiding getting caught and killed by the animatronic characters and tracking their movements via the restaurant's security cameras.</p>
+            </br>
+          </button>
+          <a href="CookieClicker.html">
+            <button other="true" class="gamecard">
+              <img class="mains" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOQ8dmB8fh0-GZLjbISoRw4_tzrHSuxGdRxdA0y6XiSkBdFy0vPnBeK44vzdPkEdVEiXHOkkC_A8IZxZkifEjkgXEy8fPQ=w1920-h950" alt="" style=" margin-top:0px;width: 100%; border-radius: 20px;" />
+          
+              <p class="gamename">Cookie Clicker</p>
+              <br class="gamedec" style="margin-bottom:0px; font-size:3px;">
+              <p> You click on a giant cookie on the screen, earning a single cookie per click.</p>
+              </br>
+            </button>
+    </div>
+    <script src="/test.js"></script>
+    <script>
+      const body = document.querySelector('body');
+
+      function toggleMode() {
+        body.classList.toggle('dark');
+        body.classList.toggle('light');
+        // Save the user's preference to local storage
+        const currentMode = body.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('mode', currentMode);
+      }
+      // Check local storage for user's preference
+      const savedMode = localStorage.getItem('mode');
+      if (savedMode === 'dark') {
+        toggleMode();
+      }
+    </script>
+    <script>
+      const searchBar = document.querySelector('#search-bar');
+      const gameCards = document.querySelectorAll('.gamecard');
+      searchBar.addEventListener('keyup', () => {
+        const searchTerm = searchBar.value.toLowerCase();
+        gameCards.forEach(card => {
+          const title = card.querySelector('.gamename').textContent.toLowerCase();
+          if (title.includes(searchTerm)) {
+            card.style.display = 'inline-block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+
+      function select_cat(type) {
+        gameCards.forEach(card => {
+          if (card.getAttribute(type) == "true" || type == "all") {
+            card.style.display = 'inline-block';
+          } else {
+            card.style.display = 'none';
+          }
+        })
+      }
+    </script>
+  </body>
+</html>
