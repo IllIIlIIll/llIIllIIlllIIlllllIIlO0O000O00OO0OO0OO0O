@@ -4,5 +4,11 @@
       }
    </style>
 
+document.body.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        window.location.replace("/*your url here*/");
+    }
+});
+
 <h1 style="color:white;">this is a test for about:blank</h1>
 <p style="color:white;">P.S, this doesn't show up in your history</p>
