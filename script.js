@@ -11,10 +11,3 @@ input.addEventListener('input', () => {
     }
   });
 });
-
-
-document.body.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-        window.location.replace("https://classroom.google.com");
-    }
-});
